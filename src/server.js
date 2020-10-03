@@ -17,7 +17,7 @@ const handlePost = (request, response) => {
     const bodyString = Buffer.concat(body).toString();
     const bodyParams = query.parse(bodyString);
 
-    jsonHandler.addUser(request, response, bodyParams);
+    jsonHandler.addParty(request, response, bodyParams);
   });
 };
 
@@ -25,17 +25,17 @@ const urlStruct = {
   GET: {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCSS,
-    '/getUsers': jsonHandler.getUsers,
-    '/notReal': jsonHandler.notFound,
+    '/index.js' : htmlHandler.getJs,
+    '/aether': jsonHandler.getAether,
+    '/primal': jsonHandler.getPrimal,
+    '/crystal': jsonHandler.getCrystal,
     notFound: jsonHandler.notFound,
   },
   HEAD: {
-    '/getUsers': jsonHandler.getUsersMeta,
-    '/notReal': jsonHandler.notFoundMeta,
     notFound: jsonHandler.notFoundMeta,
   },
   POST: {
-    '/addUser': handlePost,
+    '/addParty': handlePost,
   },
 };
 
